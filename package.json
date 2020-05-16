@@ -1,0 +1,47 @@
+{
+	"name": "job_search_app",
+	"version": "1.0.0",
+	"description": "A job search application with the MERN stack",
+	"main": "server.js",
+	"scripts": {
+		"start": "node server.js",
+		"server": "nodemon server.js",
+		"client": "npm start --prefix client",
+		"dev": "concurrently \"npm run server\" \"npm run client\""
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Ademayowa/job_search_app.git"
+	},
+	"author": "Mayowa Adeniyi",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/Ademayowa/job_search_app/issues"
+	},
+	"homepage": "https://github.com/Ademayowa/job_search_app#readme",
+	"dependencies": {
+		"bcryptjs": "^2.4.3",
+		"colors": "^1.4.0",
+		"concurrently": "^5.0.0",
+		"cookie-parser": "^1.4.4",
+		"cors": "^2.8.5",
+		"dotenv": "^8.2.0",
+		"express": "^4.17.1",
+		"express-fileupload": "^1.1.6-alpha.6",
+		"express-mongo-sanitize": "^1.3.2",
+		"express-rate-limit": "^5.0.0",
+		"helmet": "^3.21.2",
+		"hpp": "^0.2.2",
+		"jsonwebtoken": "^8.5.1",
+		"mongoose": "^5.7.8",
+		"morgan": "^1.9.1",
+		"node-geocoder": "^3.25.0",
+		"nodemailer": "^6.3.1",
+		"slugify": "^1.3.6",
+		"validator": "^12.0.0",
+		"xss-clean": "^0.1.1"
+	},
+	"devDependencies": {
+		"nodemon": "^1.19.4"
+	}
+}
