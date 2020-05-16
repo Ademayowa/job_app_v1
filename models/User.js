@@ -8,7 +8,7 @@ const userSchema = new mongoose.Schema({
     required: [true, 'Please add a username'],
     unique: true,
     maxlength: [10, 'Username cannot be more than 10 charcters'],
-    lowercase: true
+    lowercase: true,
   },
   email: {
     type: String,
@@ -16,36 +16,36 @@ const userSchema = new mongoose.Schema({
     unique: true,
     match: [
       /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
-      'Please add a valid email'
-    ]
+      'Please add a valid email',
+    ],
   },
   password: {
     type: String,
     required: true,
-    minlength: 4
+    minlength: 4,
   },
   date: {
     type: Date,
-    default: Date.now
-  }
+    default: Date.now,
+  },
 });
 
 // Encrypt password using bycrypt
-userSchema.pre('save', async function(next) {
+userSchema.pre('save', async function (next) {
   const salt = await bycrypt.genSalt(10);
   this.password = await bycrypt.hash(this.password, salt);
 });
 
 // Sign JWT
 // getSignedJwtToken is called on the variable that holds the model inside d controller
-userSchema.methods.getSignedJwtToken = function() {
+userSchema.methods.getSignedJwtToken = function () {
   return jwt.sign({ id: this._id }, process.env.JWT_SECRET, {
-    expiresIn: process.env.JWT_EXPIRE
+    expiresIn: process.env.JWT_EXPIRE,
   });
 };
 
 // Match user password to hashed password in DB
-userSchema.methods.matchPassword = async function(enteredPassword) {
+userSchema.methods.matchPassword = async function (enteredPassword) {
   return await bycrypt.compare(enteredPassword, this.password);
 };
 
