@@ -8,10 +8,13 @@ import Dashboard from '../dashboard/Dashboard';
 import Alerts from '../layout/Alerts';
 import PrivateRoute from './PrivateRoute';
 import ApplicationForm from '../job/ApplicationForm';
+import CreateProfile from '../profile-forms/CreateProfile';
+import Navbar from '../layout/Navbar';
 
 const Routes = () => {
   return (
     <div className='App'>
+      <Navbar title='Dev Portal' />
       <Alerts />
       <Switch>
         <Route exact path='/' component={Home} />
@@ -20,6 +23,7 @@ const Routes = () => {
         <Route exact path='/jobs/:jobId' component={SingleJob} />
         <Route exact path='/jobs/apply/:jobId' component={ApplicationForm} />
         <PrivateRoute exact path='/dashboard' component={Dashboard} />
+        <PrivateRoute exact path='/create-profile' component={CreateProfile} />
       </Switch>
     </div>
   );

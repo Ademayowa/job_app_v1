@@ -58,7 +58,7 @@ nav {
   color: var(--white-color) !important;
   width: 90%;
   position: relative;
-  top: 30px;
+  top: 10px;
 }
 
 a.nav-link {
@@ -179,6 +179,7 @@ a.nav-link {
 }
 
 .job-info .btn-danger,
+.no-profile .btn-danger,
 .application-form .btn-danger {
   background: var(--orange-color) !important;
   border-radius: 25px;

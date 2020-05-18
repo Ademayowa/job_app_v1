@@ -8,6 +8,7 @@ const initialState = {
   token: localStorage.getItem('token'),
   isAuthenticated: null,
   user: null,
+  profile: null,
   error: null,
   loading: true,
 };
@@ -88,8 +89,23 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+  // Profile
+  async function getProfile() {
+    try {
+      const res = await axios.get('api/v1/profiles');
+
+      dispatch({
+        type: 'GET_PROFILE',
+        payload: res.data.data,
+      });
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
   // Logout user
-  const logout = () => dispatch({ type: 'LOGOUT' });
+  const logout = () =>
+    dispatch({ type: 'LOGOUT' }, dispatch({ type: 'CLEAR_PROFILE' }));
 
   // Clear errors
   const clearErrors = () => dispatch({ type: 'CLEAR_ERRORS' });
@@ -100,12 +116,14 @@ export const AuthProvider = ({ children }) => {
         token: state.token,
         isAuthenticated: state.isAuthenticated,
         user: state.user,
+        profile: state.profile,
         loading: state.loading,
         error: state.error,
         register,
         loadUser,
         login,
         logout,
+        getProfile,
         clearErrors,
       }}
     >

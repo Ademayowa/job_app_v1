@@ -7,6 +7,12 @@ export default (state, action) => {
         loading: false,
         user: action.payload,
       };
+    case 'GET_PROFILE':
+      return {
+        ...state,
+        isAuthenticated: true,
+        profile: action.payload,
+      };
     case 'REGISTER_SUCCESS':
     case 'LOGIN_SUCCESS':
       // put token in local storage
@@ -30,11 +36,16 @@ export default (state, action) => {
         user: null,
         error: action.payload,
       };
-
     case 'CLEAR_ERRORS':
       return {
         ...state,
         error: null,
+      };
+    case 'CLEAR_PROFILE':
+      return {
+        ...state,
+        profile: null,
+        loading: false,
       };
     default:
       return state;
