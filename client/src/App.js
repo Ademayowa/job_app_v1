@@ -4,7 +4,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import './App.css';
 import 'mdbootstrap/css/bootstrap.min.css';
 import 'mdbootstrap/css/mdb.min.css';
-import { AuthProvider } from './context/auth/AuthState';
+import { AuthProvider, AuthContext } from './context/auth/AuthState';
 import { JobProvider } from './context/jobs/JobState';
 import { AlertProvider } from './context/alert/AlertState';
 // import Footer from './components/layout/Footer';

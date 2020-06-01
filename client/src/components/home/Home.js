@@ -7,12 +7,15 @@ import FeaturedJobs from '../jobs/FeaturedJobs';
 // import Testimonials from '../candidate/Testimonials';
 // import HowItworks from './HowItworks';
 import { AuthContext } from '../../context/auth/AuthState';
+import { Redirect } from 'react-router-dom';
 
 const Home = () => {
-  const { loadUser } = useContext(AuthContext);
+  const { isAuthenticated } = useContext(AuthContext);
 
   useEffect(() => {
-    loadUser();
+    if (isAuthenticated) {
+      return <Redirect to='/dashboard' />;
+    }
     // eslint-disable-next-line
   }, []);
 
