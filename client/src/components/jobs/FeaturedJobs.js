@@ -7,8 +7,6 @@ import Title from '../home/Title';
 const FeaturedJobs = () => {
   const { jobs, loading, getJobs, filtered } = useContext(JobContext);
 
-  // console.log(jobs);
-
   useEffect(() => {
     getJobs();
     // eslint-disable-next-line
@@ -18,7 +16,7 @@ const FeaturedJobs = () => {
   return (
     <div className='container featured-jobs text-center'>
       <Title title='featured jobs' />
-      <div style={grid}>
+      <div>
         {filtered !== null
           ? filtered.map((job) => <FeaturedJobList key={job._id} job={job} />)
           : jobs.map((job) => <FeaturedJobList key={job._id} job={job} />)}
@@ -27,10 +25,10 @@ const FeaturedJobs = () => {
   );
 };
 
-const grid = {
-  display: 'grid',
-  gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
-  gridGap: '2rem',
-};
+// const grid = {
+//   display: 'grid',
+//   gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
+//   gridGap: '2rem',
+// };
 
 export default FeaturedJobs;

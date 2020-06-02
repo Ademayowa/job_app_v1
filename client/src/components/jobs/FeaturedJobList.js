@@ -6,34 +6,43 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 const FeaturedJobList = ({ job }) => {
-  return (
-    <article className='card card-body py-4'>
-      <img
-        src={Img}
-        alt='jobs'
-        className='img-fluid mx-auto'
-        style={{ width: '60px' }}
-      />
-      <div>
-        <Link to={`/jobs/${job._id}`}>
-          <h5 className='mt-4 mb-4'>{job.title}</h5>
-        </Link>
-        <span>
-          <GiNetworkBars size={14} /> {job.skillLevel}{' '}
-          <MdLocationOn size={14} /> {job.location}
-        </span>
-      </div>
+  let { name, title, skillLevel, location, type } = job;
 
-      <div className='card-footer mt-5 pt-4'>
-        <span className='float-left mt-2'>{job.type}</span>
-        <Link
-          to={`/jobs/${job._id}`}
-          className='btn btn-outline-danger btn-sm float-right'
-        >
-          Apply Now
-        </Link>
+  return (
+    <section className='featured'>
+      <div className='card card-body p-4 m-4 text-left'>
+        <div>
+          {/* <img
+            src={logo}
+            alt='img-logo'
+            className='img-fluid'
+            style={{
+              width: '80px',
+              height: '80px',
+              objectFit: 'cover',
+              borderRadius: '60px',
+              position: 'relative',
+              top: '15px',
+            }}
+          /> */}
+        </div>
+        <div style={{ marginLeft: '100px', marginTop: '-60px' }}>
+          <h3 className='orange-color text-capitalize mb-2'>{name}</h3>
+          <h4>{title}</h4>
+          <p className='gray-color'>
+            {type} · {location}
+          </p>
+        </div>
+        <div className='float-right apply mb-4' style={{ marginTop: '-50px' }}>
+          <Link
+            to={`/jobs/${job._id}`}
+            className='btn btn-outline-danger btn-sm float-right'
+          >
+            Apply Now
+          </Link>
+        </div>
       </div>
-    </article>
+    </section>
   );
 };
 

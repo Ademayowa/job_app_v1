@@ -9,12 +9,10 @@ import Alerts from '../layout/Alerts';
 import PrivateRoute from './PrivateRoute';
 import ApplicationForm from '../job/ApplicationForm';
 import CreateProfile from '../profile-forms/CreateProfile';
-import Navbar from '../layout/Navbar';
 
 const Routes = () => {
   return (
     <div className='App'>
-      <Navbar title='Dev Portal' />
       <Alerts />
       <Switch>
         <Route exact path='/' component={Home} />

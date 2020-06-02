@@ -4,7 +4,7 @@ import { FaCode } from 'react-icons/fa';
 
 const Navbar = ({ title }) => {
   return (
-    <nav className='navbar navbar-expand-lg navbar-info m-auto p-4 z-depth-3'>
+    <nav className='navbar navbar-expand-lg navbar-info m-auto p-4'>
       <div className='container'>
         <Link className='navbar-brand text-white' to='/'>
           <FaCode size={32} color='#ff6633' /> {title}

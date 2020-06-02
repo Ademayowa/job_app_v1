@@ -34,6 +34,10 @@ const jobSchema = new mongoose.Schema({
     type: String,
     required: [true, 'Please add job summary'],
   },
+  // logo: {
+  //   type: String,
+  //   required: true,
+  // },
   description: {
     type: String,
     required: [true, 'Please add job description'],
