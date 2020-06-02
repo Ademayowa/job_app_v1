@@ -89,12 +89,11 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  // Get profile
+  // Profile
   async function getProfile() {
     try {
       const res = await axios.get('api/v1/profiles');
 
-      loadUser();
       dispatch({
         type: 'GET_PROFILE',
         payload: res.data.data,
@@ -103,29 +102,6 @@ export const AuthProvider = ({ children }) => {
       console.error(err);
     }
   }
-
-  // Create profile
-  const createProfile = async (formData) => {
-    const config = {
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    };
-
-    try {
-      const res = await axios.post('api/v1/profile', formData, config);
-
-      dispatch({
-        type: 'CREATE_PROFILE',
-        payload: res.data.data,
-      });
-    } catch (err) {
-      dispatch({
-        type: 'PROFILE_ERROR',
-        payload: err.response.data.msg,
-      });
-    }
-  };
 
   // Logout user
   const logout = () =>
@@ -149,7 +125,6 @@ export const AuthProvider = ({ children }) => {
         logout,
         getProfile,
         clearErrors,
-        createProfile,
       }}
     >
       {children}

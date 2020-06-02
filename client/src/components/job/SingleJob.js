@@ -3,24 +3,17 @@ import { JobContext } from '../../context/jobs/JobState';
 import { Link } from 'react-router-dom';
 import Img from '../../img/company4.png';
 import Spinner from '../layout/Spinner';
-import { FaTools, FaPhone, FaEnvelope } from 'react-icons/fa';
+import { MdLocationOn } from 'react-icons/md';
+import {
+  FaRegMoneyBillAlt,
+  FaTools,
+  FaPhone,
+  FaEnvelope,
+} from 'react-icons/fa';
 import { IoMdGlobe } from 'react-icons/io';
 
 const SingleJob = ({ match }) => {
   let { job, loading, getJob } = useContext(JobContext);
-
-  const {
-    title,
-    location,
-    salary,
-    description,
-    responsibilities,
-    skills,
-    phone,
-    email,
-    website,
-    name,
-  } = job;
 
   useEffect(() => {
     getJob(match.params.jobId);
@@ -35,26 +28,40 @@ const SingleJob = ({ match }) => {
           <Link to='/' className='btn btn-danger text-capitalize'>
             Back
           </Link>
-          <h3 className='mt-4 mb-4'>{title}</h3>
+          <h3 className='mt-4 mb-4'>{job.title}</h3>
           <p className='mb-4'>
-            Location : {location} · Salary : {salary}
+            <span className='icons'>
+              <MdLocationOn size={20} color='#ff6633' /> {job.location}{' '}
+              <FaRegMoneyBillAlt size={20} color='#ff6633' /> Salary :{' '}
+              {job.salary}
+              <FaTools size={20} color='#ff6633' /> Role : {job.skillLevel}
+            </span>
           </p>
           <hr />
 
           <h4 className='mt-5 mb-3'>Job description</h4>
-          <p>{description}</p>
+          <p>{job.description}</p>
+
           <h4 className='mt-5 mb-3'>Responsibilities</h4>
           <ul>
-            {responsibilities.role.map((item, index) => (
+            {job.responsibilities.role.map((item, index) => (
               <li key={index}>{item}</li>
             ))}
           </ul>
+
           <h4 className='mt-5 mb-3'>Skills</h4>
           <ul>
-            {skills.skill.map((item, index) => (
+            {job.skills.skill.map((item, index) => (
               <li key={index}>{item}</li>
             ))}
           </ul>
+
+          {/* <h4 className='mt-5 mb-3'>About Company</h4>
+          <ul>
+            {job.company.about.map((item, index) => (
+              <li key={index}>{item}</li>
+            ))}
+          </ul> */}
         </div>
 
         <div className='col-lg-4 mt-5 p-4'>
@@ -70,24 +77,24 @@ const SingleJob = ({ match }) => {
             }}
           />
           <article className='ml-4 company-details'>
-            <h4 className='mb-3 mt-4 text-capitalize'>{name}</h4>
+            <h4 className='mb-3 mt-4 text-capitalize'>{job.name}</h4>
             <p>
               <span>
                 <IoMdGlobe size={16} color='#ff6633' />{' '}
               </span>
-              <Link to='#'>{website}</Link>
+              <Link to='#'>{job.website}</Link>
             </p>
             <p>
               <span>
                 <FaEnvelope size={16} color='#ff6633' />{' '}
               </span>
-              {email}
+              {job.email}
             </p>
             <p>
               <span>
                 <FaPhone size={16} color='#ff6633' />{' '}
               </span>
-              {phone}
+              {job.phone}
             </p>
 
             <Link

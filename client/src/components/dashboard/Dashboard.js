@@ -1,9 +1,9 @@
 import React, { useContext, useEffect } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { AuthContext } from '../../context/auth/AuthState';
 
 const Dashboard = () => {
-  const { getProfile, profile } = useContext(AuthContext);
+  const { getProfile, profile, user } = useContext(AuthContext);
 
   useEffect(() => {
     getProfile();
@@ -12,7 +12,10 @@ const Dashboard = () => {
 
   return profile === null ? (
     <div className='container no-profile mt-5 mb-5'>
-      <Redirect to='/create-profile' />
+      <p className='lead'>You don't have a profile yet!</p>
+      <Link className='btn btn-danger btn-lg' to='/create-profile'>
+        Create Profile
+      </Link>
     </div>
   ) : (
     <div className='container mt-5 mb-5'>
