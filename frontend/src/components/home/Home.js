@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import Hero from './Hero';
 import Navbar from '../layout/Navbar';
 import Banner from './Banner';
@@ -7,7 +7,7 @@ import FeaturedJobs from '../jobs/FeaturedJobs';
 
 const Home = () => {
   return (
-    <Fragment>
+    <>
       <Hero>
         <Navbar title='Dev Portal' />
         <Banner
@@ -18,7 +18,7 @@ const Home = () => {
         </Banner>
       </Hero>
       <FeaturedJobs />
-    </Fragment>
+    </>
   );
 };
 

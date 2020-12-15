@@ -1,8 +1,8 @@
-const jwt = require('jsonwebtoken');
-const dotenv = require('dotenv');
-const User = require('../models/User');
+import jwt from 'jsonwebtoken';
+import dotenv from 'dotenv';
+import User from '../models/User.js';
 
-exports.auth = async (req, res, next) => {
+const auth = async (req, res, next) => {
   // Get token from the header
   let token;
 
@@ -26,3 +26,5 @@ exports.auth = async (req, res, next) => {
     });
   }
 };
+
+export { auth };

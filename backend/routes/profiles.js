@@ -1,7 +1,7 @@
-const express = require('express');
+import express from 'express';
 const router = express.Router();
-const dotenv = require('dotenv');
-const { auth } = require('../middleware/auth');
+// import dotenv from ('dotenv');
+import { auth } from '../middleware/auth.js';
 
 const {
   getProfiles,
@@ -23,4 +23,4 @@ router.get('/', auth, getCurrentProfile);
 router.get('/handle/:handle', getHandle);
 router.put('/:id/photo', auth, profilePhotoUpload);
 
-module.exports = router;
+export default router;

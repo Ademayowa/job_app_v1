@@ -1,28 +1,22 @@
-const path = require('path');
-const express = require('express');
-const dotenv = require('dotenv');
-const morgan = require('morgan');
-const connectDB = require('./config/db');
-const colors = require('colors');
-const fileUpload = require('express-fileupload');
-const errorHandler = require('./middleware/error');
-const mongoSanitize = require('express-mongo-sanitize');
-const auth = require('./routes/auth');
-const jobs = require('./routes/jobs');
-const companies = require('./routes/companies');
-const profiles = require('./routes/profiles');
-const application = require('./routes/application');
+import path from 'path';
+import express from 'express';
+import dotenv from 'dotenv';
+import morgan from 'morgan';
+import colors from 'colors';
+import mongoSanitize from 'express-mongo-sanitize';
+import { errorHandler } from './middleware/errorMiddleware.js';
+import connectDB from './config/db.js';
+import auth from './routes/auth.js';
+import jobs from './routes/jobs.js';
+import companies from './routes/companies.js';
+// import application from './routes/application.js';
 
-// Load env vars
 dotenv.config();
-
-// Connect DB
 connectDB();
 
 const app = express();
 const API_PREFIX = '/api/v1';
 
-// Body parser
 app.use(express.json());
 
 // Dev logging middleware
@@ -30,21 +24,15 @@ if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
 }
 
-// File Upload
-app.use(fileUpload());
-
 // Sanitize inputs
 app.use(mongoSanitize());
-
-// Set static folder
-// app.use(express.static(path.join(__dirname, 'public')));
 
 // Mount routers
 app.use(`${API_PREFIX}/auth`, auth);
 app.use(`${API_PREFIX}/jobs`, jobs);
 app.use(`${API_PREFIX}/companies`, companies);
-app.use(`${API_PREFIX}/profiles`, profiles);
-app.use(`${API_PREFIX}/jobs`, application);
+// app.use(`${API_PREFIX}/jobs`, application);
+
 app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000;

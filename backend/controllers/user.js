@@ -1,13 +1,10 @@
-const express = require('express');
+import express from 'express';
 const router = express.Router();
-const dotenv = require('dotenv');
-const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
-
-// User model
-const User = require('../models/User');
-const asyncMiddleware = require('../middleware/async');
-const ErrorResponse = require('../utils/errorResponse');
+import asyncHandler from 'express-async-handler';
+import dotenv from 'dotenv';
+import bcrypt from 'bcryptjs';
+import jwt from 'jsonwebtoken';
+import User from '../models/User.js';
 
 /**
  * @description  Register user
@@ -15,7 +12,7 @@ const ErrorResponse = require('../utils/errorResponse');
  * @returns {Object} token
  * @access public
  */
-exports.signup = asyncMiddleware(async (req, res, next) => {
+const signup = asyncHandler(async (req, res) => {
   const { username, email, password } = req.body;
 
   // Create user
@@ -38,19 +35,21 @@ exports.signup = asyncMiddleware(async (req, res, next) => {
  * @returns {Object} token
  * @access public
  */
-exports.signin = asyncMiddleware(async (req, res, next) => {
+const signin = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
 
   // Validate email & passwword
   if (!email || !password) {
-    return next(new ErrorResponse('Please provide an email and password', 400));
+    res.status(400);
+    throw new Error('Enter email or password');
   }
 
   // Check for user
   const user = await User.findOne({ email });
 
   if (!user) {
-    return next(new ErrorResponse('Invalid credentials', 401));
+    res.status(401);
+    throw new Error('Invalid credentials');
   }
 
   // Check if password matches
@@ -58,7 +57,8 @@ exports.signin = asyncMiddleware(async (req, res, next) => {
   const match = await user.matchPassword(password);
 
   if (!match) {
-    return next(new ErrorResponse('Invalid credentials', 401));
+    res.status(401);
+    throw new Error('Invalid credentials');
   }
 
   // Create token
@@ -72,8 +72,9 @@ exports.signin = asyncMiddleware(async (req, res, next) => {
  * @returns {Object} token
  * @access private
  */
-exports.current = asyncMiddleware(async (req, res, next) => {
-  const user = await User.findById(req.user.id)
-  .select('-password');
+const current = asyncHandler(async (req, res) => {
+  const user = await User.findById(req.user.id).select('-password');
   res.status(200).json({ success: true, user });
 });
+
+export { signin, signup, current };

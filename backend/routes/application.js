@@ -1,9 +1,9 @@
-const express = require('express');
-const router = express.Router();
-const dotenv = require('dotenv');
+// import express from 'express';
+// const router = express.Router();
+// import dotenv from 'dotenv';
 
-const { applyJob } = require('../controllers/application');
+// const { applyJob } = require('../controllers/application');
 
-router.post('/apply', applyJob);
+// router.post('/apply', applyJob);
 
-module.exports = router;
+// export default router;
