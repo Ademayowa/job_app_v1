@@ -31,7 +31,7 @@ const SingleJob = ({ match }) => {
           <h3 className='mt-4 mb-4'>{job.title}</h3>
           <p className='mb-4'>
             <span className='icons'>
-              <MdLocationOn size={20} color='#ff6633' /> {job.location}{' '}
+              <MdLocationOn size={20} color='#ff6633' /> {job.location}
               <FaRegMoneyBillAlt size={20} color='#ff6633' /> Salary :
               {job.salary}
               <FaTools size={20} color='#ff6633' /> Role : {job.skillLevel}
