@@ -1,61 +1,40 @@
-const fs = require('fs');
-const mongoose = require('mongoose');
-const colors = require('colors');
-const dotenv = require('dotenv');
+import mongoose from 'mongoose';
+import dotenv from 'dotenv';
+import colors from 'colors';
+import jobs from './data/jobs.js';
+import Job from './models/Job.js';
+import connectDB from './config/db.js';
 
-// Load env vars
-dotenv.config({ path: './config/config.env' });
+dotenv.config();
+connectDB();
 
-// Load models
-const Job = require('./models/Job');
-const Company = require('./models/Company');
-
-// Connect to DB
-mongoose.connect(process.env.MONGO_URI, {
-	useNewUrlParser: true,
-	useCreateIndex: true,
-	useFindAndModify: false,
-	useUnifiedTopology: true
-});
-
-// Read JSON files
-const jobs = JSON.parse(
-	fs.readFileSync(`${__dirname}/_data/jobs.json`, 'utf-8')
-);
-
-const companies = JSON.parse(
-	fs.readFileSync(`${__dirname}/_data/companies.json`, 'utf-8')
-);
-
-// Import into DB
 const importData = async () => {
-	try {
-		await Job.create(jobs);
-		await Company.create(companies);
+  try {
+    await Job.insertMany(jobs);
 
-		console.log('Data imported...'.green.inverse);
-		process.exit();
-	} catch (err) {
-		console.error(err);
-	}
+    console.log('Data imported'.green.inverse);
+    process.exit();
+  } catch (error) {
+    console.error(`${error}`.red.inverse);
+    process.exit(1);
+  }
 };
 
-// Delete data
-const deleteData = async () => {
-	try {
-		await Job.deleteMany();
-		await Company.deleteMany();
+const destroyData = async () => {
+  try {
+    await Job.deleteMany();
 
-		console.log('Data destroyed...'.red.inverse);
-		process.exit();
-	} catch (err) {
-		console.error(err);
-	}
+    console.log('Data destroyed'.red.inverse);
+    process.exit();
+  } catch (error) {
+    console.error(`${error}`.red.inverse);
+    process.exit(1);
+  }
 };
 
-// Script that either delete or import data
-if (process.argv[2] === '-i') {
-	importData();
-} else if (process.argv[2] === '-d') {
-	deleteData();
+if (process.argv[2] === '-d') {
+  destroyData();
+} else {
+  // use npm run data:import
+  importData();
 }

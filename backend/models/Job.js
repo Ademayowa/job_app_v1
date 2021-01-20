@@ -38,12 +38,18 @@ const jobSchema = new mongoose.Schema({
     type: String,
     required: [true, 'Please add job description'],
   },
-  responsibilities: {
-    role: {
-      type: [String],
-      required: [true, 'Please add respnsibilities'],
-    },
+
+  role: {
+    type: [String],
+    required: [true, 'Please add a role'],
   },
+
+  // responsibilities: {
+  //   role: {
+  //     type: [String],
+  //     required: [true, 'Please add respnsibilities'],
+  //   },
+  // },
   salary: {
     type: String,
     required: [true, 'Please add salary'],
@@ -57,12 +63,12 @@ const jobSchema = new mongoose.Schema({
     required: [true, 'Please add a skill level'],
     enum: ['intern', 'junior', 'intermediate', 'senior'],
   },
-  skills: {
-    skill: {
-      type: [String],
-      required: [true, 'Please add skills'],
-    },
-  },
+  // skills: {
+  //   skill: {
+  //     type: [String],
+  //     required: [true, 'Please add skills'],
+  //   },
+  // },
   logo: {
     type: String,
   },
