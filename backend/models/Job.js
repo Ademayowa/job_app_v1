@@ -16,17 +16,6 @@ const jobSchema = new mongoose.Schema({
       'Please use a valid URL with HTTP or HTTPS',
     ],
   },
-  phone: {
-    type: String,
-    maxlength: [15, 'Phone number cannot be longer than 12 charcters'],
-  },
-  email: {
-    type: String,
-    match: [
-      /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
-      'Please add a valid email',
-    ],
-  },
   title: {
     type: String,
     trim: true,
@@ -40,11 +29,9 @@ const jobSchema = new mongoose.Schema({
     type: String,
     required: [true, 'Please add job description'],
   },
-  responsibilities: {
-    role: {
-      type: [String],
-      required: [true, 'Please add respnsibilities'],
-    },
+  role: {
+    type: [String],
+    required: [true, 'Please add a role'],
   },
   salary: {
     type: String,
@@ -53,17 +40,6 @@ const jobSchema = new mongoose.Schema({
   location: {
     type: String,
     required: true,
-  },
-  skillLevel: {
-    type: String,
-    required: [true, 'Please add a skill level'],
-    enum: ['intern', 'junior', 'intermediate', 'senior'],
-  },
-  skills: {
-    skill: {
-      type: [String],
-      required: [true, 'Please add skills'],
-    },
   },
   logo: {
     type: String,
@@ -75,10 +51,6 @@ const jobSchema = new mongoose.Schema({
   type: {
     type: String,
     required: [true, 'Please add a type'],
-  },
-  visaSponsorship: {
-    type: Boolean,
-    default: false,
   },
   createdAt: {
     type: Date,
