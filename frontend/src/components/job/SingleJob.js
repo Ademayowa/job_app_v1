@@ -1,21 +1,31 @@
 import React, { useContext, useEffect } from 'react';
-import { JobContext } from '../../context/jobs/JobState';
 import { Link } from 'react-router-dom';
-import Img from '../../img/company4.png';
+import { JobContext } from '../../context/jobs/JobState';
 import Spinner from '../layout/Spinner';
-import { MdLocationOn } from 'react-icons/md';
 import {
   FaRegMoneyBillAlt,
   FaTools,
   FaPhone,
   FaEnvelope,
 } from 'react-icons/fa';
+import { MdLocationOn } from 'react-icons/md';
 import { IoMdGlobe } from 'react-icons/io';
 
 const SingleJob = ({ match }) => {
-  let { job, loading, getJob } = useContext(JobContext);
-
-  console.log(job);
+  const { job, loading, getJob } = useContext(JobContext);
+  const {
+    title,
+    location,
+    salary,
+    description,
+    type,
+    name,
+    logo,
+    website,
+    skills,
+    role,
+    about,
+  } = job;
 
   useEffect(() => {
     getJob(match.params.jobId);
@@ -24,64 +34,63 @@ const SingleJob = ({ match }) => {
 
   if (loading) return <Spinner />;
   return (
-    <div className='container job-info mb-5'>
+    <div className='singleJob container mb-5'>
       <div className='row'>
-        <div className='col-lg-8 margin p-4'>
-          <Link to='/' className='btn btn-danger text-capitalize'>
+        <div className='col-lg-8 p-4'>
+          <Link to='/' className='btn btn-danger'>
             Back
           </Link>
-          <h3 className='mt-4 mb-4'>{job.title}</h3>
-          <p className='mb-4'>
-            <span className='icons'>
-              <MdLocationOn size={20} color='#ff6633' /> {job.location}
-              <FaRegMoneyBillAlt size={20} color='#ff6633' /> Salary :
-              {job.salary}
-              <FaTools size={20} color='#ff6633' /> Role : {job.type}
-            </span>
+          <h3 className='mt-4 mb-2'>{title}</h3>
+          <p className='singleJob__info'>
+            <MdLocationOn className='location' />
+            Location : {location}
+            <FaRegMoneyBillAlt /> Salary : {salary}
+            <FaTools /> Type : {type}
           </p>
           <hr />
 
-          <h4 className='mt-5 mb-3'>Job description</h4>
-          <p>{job.description}</p>
-
-          <h4 className='mt-5 mb-3'>Responsibilities</h4>
+          <h4>Job description</h4>
+          <p>{description}</p>
+          <h4>Responsibilities</h4>
           <ul>
-            {job.role &&
-              job.role.map((item, index) => <li key={index}>{item}</li>)}
+            {role && role.map((item, index) => <li key={index}>{item}</li>)}
           </ul>
-
-          <h4 className='mt-5 mb-3'>Skills</h4>
+          <h4>Skills</h4>
+          <ul>
+            {skills &&
+              skills.map((skill, index) => <li key={index}>{skill}</li>)}
+          </ul>
+          <h4>About us</h4>
+          <p>{about}</p>
         </div>
 
-        <div className='col-lg-4 mt-5 p-4'>
+        <article className='col-lg-4 mt-4 pt-2'>
           <img
-            src={Img}
-            alt='company'
-            className='img-fluid z-depth-5 mb-5 ml-4'
-            style={{
-              width: '120px',
-              height: '120px',
-              objectFit: 'cover',
-              borderRadius: '60px',
-            }}
+            src={logo}
+            alt='logo'
+            className='singleJob__logo img-fluid z-depth-5 mb-lg-5 ml-4'
           />
-          <article className='ml-4 company-details'>
-            <h4 className='mb-3 mt-4 text-capitalize'>{job.name}</h4>
+          <div className='singleJob__company ml-4'>
+            <h4 className='mb-2 mt-3'>{name}</h4>
             <p>
-              <span>
-                <IoMdGlobe size={16} color='#ff6633' />{' '}
-              </span>
-              <Link to='#'>{job.website}</Link>
+              <IoMdGlobe className='globe' />
+              <a
+                href={`${website}`}
+                target='_blank'
+                rel='noopener noreferrer'
+                className='ml-2'
+              >
+                {website}
+              </a>
             </p>
-
             <Link
               to={`/jobs/apply/${job._id}`}
-              className='btn btn-danger btn-lg text-capitalize'
+              className='btn btn-danger btn-lg'
             >
               Apply
             </Link>
-          </article>
-        </div>
+          </div>
+        </article>
       </div>
     </div>
   );

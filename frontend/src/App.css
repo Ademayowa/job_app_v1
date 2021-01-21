@@ -197,30 +197,51 @@ a.nav-link {
 }
 
 /* Single job page*/
-.job-info h3 {
+.singleJob h3 {
   color: var(--orange-color);
 }
 
-.job-info hr {
+.singleJob__company p {
+  margin-top: -15px;
+}
+
+.singleJob hr {
   border-bottom: 1px solid #e8ecec;
 }
 
-.job-info ul {
-  padding-left: 15px;
-}
-
-.job-info p,
-.job-info ul {
+.singleJob p,
+.singleJob ul {
   color: var(--gray-color);
   line-height: var(--line-height);
 }
 
-.job-info .icons {
-  line-height: var(--line-height);
-  display: table;
+.singleJob__info svg {
+  margin-left: 15px;
+  color: var(--orange-color);
 }
 
-.job-info .btn-danger,
+.location {
+  margin-left: 0 !important;
+}
+
+.singleJob__icons {
+  line-height: var(--line-height);
+}
+
+.singleJob h4 {
+  padding: 15px 0;
+}
+
+.singleJob__icons svg {
+  margin-left: 15px;
+  color: var(--orange-color);
+  font-size: 20px;
+}
+
+.singleJob .btn-danger {
+  text-transform: capitalize;
+}
+
 .no-profile .btn-danger,
 .application-form .btn-danger {
   background: var(--orange-color) !important;
@@ -228,48 +249,36 @@ a.nav-link {
   border: 0 !important;
 }
 
-.login .btn-outline-danger,
-.register .btn-outline-danger {
-  color: var(--white-color) !important;
+.singleJob .btn-danger {
   background: var(--orange-color) !important;
-  /* border-radius: 25px; */
-  height: 54px;
+  border-radius: 25px;
   border: 0 !important;
+  margin-top: -5px;
+  text-transform: uppercase;
+  font-weight: bold;
 }
 
-.register .card:hover,
-.login .card:hover {
-  transform: none !important;
-  background-color: none !important;
+.singleJob__logo {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 60px;
 }
 
-.company-details .btn-danger {
+.singleJob__company .btn-danger {
   width: 250px !important;
   font-size: 13px !important;
   border-radius: 40px !important;
   border: 0 !important;
 }
 
-/* Testimonials */
-.testimonials .card:hover {
-  transform: none;
+.singleJob__company h4 {
+  text-transform: capitalize;
 }
 
-.testimonials {
-  padding: 70px 15px 120px 15px;
-  background-color: var(--blue-color);
-}
-
-/* Footer */
-.footer-banner {
-  margin-bottom: -80px !important;
-  padding: var(--section-padding);
-  line-height: 2;
-  letter-spacing: var(--letter-spacing);
-}
-
-.footer-banner ul {
-  margin-left: -40px !important;
+.globe {
+  font-size: 16px;
+  color: var(--orange-color);
 }
 
 .center-line {
@@ -277,18 +286,6 @@ a.nav-link {
   height: 1px;
   margin: 0px auto 25px;
   width: 150px;
-}
-
-/* slider */
-.slick-dots {
-  bottom: -55px;
-}
-.slick-dots li.slick-active button:before {
-  opacity: 0.75;
-  color: var(--orange-color) !important;
-}
-.slick-dots li button:before {
-  font-size: 12px;
 }
 
 .featured .card {
@@ -321,6 +318,12 @@ a.nav-link {
     position: absolute;
     top: 250px;
     left: 100px;
+  }
+}
+
+@media (max-width: 576px) {
+  .featured h3 {
+    font-size: 20px;
   }
 }
 
