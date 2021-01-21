@@ -24,6 +24,7 @@ if (process.env.NODE_ENV === 'development') {
 // Sanitize inputs
 app.use(mongoSanitize());
 
+const __dirname = path.resolve();
 // Serve static assets if in production
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, '/frontend/build')));
