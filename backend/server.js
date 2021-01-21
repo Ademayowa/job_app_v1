@@ -9,7 +9,6 @@ import connectDB from './config/db.js';
 import auth from './routes/auth.js';
 import jobs from './routes/jobs.js';
 import companies from './routes/companies.js';
-// import application from './routes/application.js';
 
 dotenv.config();
 connectDB();
@@ -31,7 +30,6 @@ app.use(mongoSanitize());
 app.use(`${API_PREFIX}/auth`, auth);
 app.use(`${API_PREFIX}/jobs`, jobs);
 app.use(`${API_PREFIX}/companies`, companies);
-// app.use(`${API_PREFIX}/jobs`, application);
 
 app.use(errorHandler);
 
