@@ -5,7 +5,6 @@ import { JobContext } from '../../context/jobs/JobState';
 
 const SearchForm = () => {
   const { filtered, filteredJobs } = useContext(JobContext);
-
   const text = useRef('');
 
   useEffect(() => {
@@ -19,7 +18,7 @@ const SearchForm = () => {
   };
 
   return (
-    <div className='container job-search'>
+    <div className='container job-search mb-5'>
       <form>
         <div className='row'>
           <div className='col-lg-7'>

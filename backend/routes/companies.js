@@ -1,24 +1,17 @@
-const express = require('express');
+import express from 'express';
 const router = express.Router();
-const dotenv = require('dotenv');
+import dotenv from 'dotenv';
 
-const {
+import {
   getCompanies,
   getCompany,
   createCompany,
   updateCompany,
-  deleteCompany
-} = require('../controllers/companies');
+  deleteCompany,
+} from '../controllers/companies.js';
 
-router
-  .route('/')
-  .get(getCompanies)
-  .post(createCompany);
+router.route('/').get(getCompanies).post(createCompany);
 
-router
-  .route('/:id')
-  .get(getCompany)
-  .put(updateCompany)
-  .delete(deleteCompany);
+router.route('/:id').get(getCompany).put(updateCompany).delete(deleteCompany);
 
-module.exports = router;
+export default router;

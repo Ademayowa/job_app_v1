@@ -1,4 +1,6 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
+import bcrypt from 'bcryptjs';
+import jwt from 'jsonwebtoken';
 
 const jobSchema = new mongoose.Schema({
   name: {
@@ -14,17 +16,6 @@ const jobSchema = new mongoose.Schema({
       'Please use a valid URL with HTTP or HTTPS',
     ],
   },
-  phone: {
-    type: String,
-    maxlength: [15, 'Phone number cannot be longer than 12 charcters'],
-  },
-  email: {
-    type: String,
-    match: [
-      /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
-      'Please add a valid email',
-    ],
-  },
   title: {
     type: String,
     trim: true,
@@ -38,7 +29,6 @@ const jobSchema = new mongoose.Schema({
     type: String,
     required: [true, 'Please add job description'],
   },
-
   role: {
     type: [String],
     required: [true, 'Please add a role'],
@@ -80,14 +70,12 @@ const jobSchema = new mongoose.Schema({
     type: String,
     required: [true, 'Please add a type'],
   },
-  visaSponsorship: {
-    type: Boolean,
-    default: false,
-  },
   createdAt: {
     type: Date,
     default: Date.now,
   },
 });
 
-module.exports = mongoose.model('Job', jobSchema);
+const Job = mongoose.model('Job', jobSchema);
+
+export default Job;

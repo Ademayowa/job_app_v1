@@ -15,6 +15,8 @@ import { IoMdGlobe } from 'react-icons/io';
 const SingleJob = ({ match }) => {
   let { job, loading, getJob } = useContext(JobContext);
 
+  console.log(job);
+
   useEffect(() => {
     getJob(match.params.jobId);
     // eslint-disable-next-line
@@ -31,10 +33,10 @@ const SingleJob = ({ match }) => {
           <h3 className='mt-4 mb-4'>{job.title}</h3>
           <p className='mb-4'>
             <span className='icons'>
-              <MdLocationOn size={20} color='#ff6633' /> {job.location}{' '}
-              <FaRegMoneyBillAlt size={20} color='#ff6633' /> Salary :{' '}
+              <MdLocationOn size={20} color='#ff6633' /> {job.location}
+              <FaRegMoneyBillAlt size={20} color='#ff6633' /> Salary :
               {job.salary}
-              <FaTools size={20} color='#ff6633' /> Role : {job.skillLevel}
+              <FaTools size={20} color='#ff6633' /> Role : {job.type}
             </span>
           </p>
           <hr />
@@ -44,17 +46,11 @@ const SingleJob = ({ match }) => {
 
           <h4 className='mt-5 mb-3'>Responsibilities</h4>
           <ul>
-            {job.responsibilities.role.map((item, index) => (
-              <li key={index}>{item}</li>
-            ))}
+            {job.role &&
+              job.role.map((item, index) => <li key={index}>{item}</li>)}
           </ul>
 
           <h4 className='mt-5 mb-3'>Skills</h4>
-          <ul>
-            {job.skills.skill.map((item, index) => (
-              <li key={index}>{item}</li>
-            ))}
-          </ul>
         </div>
 
         <div className='col-lg-4 mt-5 p-4'>
@@ -76,18 +72,6 @@ const SingleJob = ({ match }) => {
                 <IoMdGlobe size={16} color='#ff6633' />{' '}
               </span>
               <Link to='#'>{job.website}</Link>
-            </p>
-            <p>
-              <span>
-                <FaEnvelope size={16} color='#ff6633' />{' '}
-              </span>
-              {job.email}
-            </p>
-            <p>
-              <span>
-                <FaPhone size={16} color='#ff6633' />{' '}
-              </span>
-              {job.phone}
             </p>
 
             <Link

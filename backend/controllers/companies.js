@@ -1,25 +1,22 @@
-const express = require('express');
+import express from 'express';
 const router = express.Router();
-const dotenv = require('dotenv');
-
-const Company = require('../models/Company');
-const asyncMiddleware = require('../middleware/async');
-const ErrorResponse = require('../utils/errorResponse');
+import asyncHandler from 'express-async-handler';
+import Company from '../models/Company.js';
 
 /**
  * @description  Get all companies
  * @route  GET api/v1/companies
  * @returns {Object} count & data
  * @access public
- * // asyncMiddleware allows you avoid using try & catch while new             ErrorResponse allows you to pass the error(in a try catch block) to the next obj
+ *
  */
-exports.getCompanies = asyncMiddleware(async (req, res, next) => {
+const getCompanies = asyncHandler(async (req, res) => {
   const companies = await Company.find().populate('jobs');
 
   res.status(200).json({
     success: true,
     count: companies.length,
-    data: companies
+    data: companies,
   });
 });
 
@@ -29,16 +26,12 @@ exports.getCompanies = asyncMiddleware(async (req, res, next) => {
  * @returns {Object} data
  * @access public
  */
-exports.getCompany = asyncMiddleware(async (req, res, next) => {
+const getCompany = asyncHandler(async (req, res) => {
   const company = await Company.findById(req.params.id);
 
   if (!company) {
-    return next(
-      new ErrorResponse(
-        `Company not found with the ID of ${req.params.id}`,
-        404
-      )
-    );
+    res.status(404);
+    throw new Error('Company not found');
   }
 
   res.status(200).json({ success: true, data: company });
@@ -50,9 +43,8 @@ exports.getCompany = asyncMiddleware(async (req, res, next) => {
  * @returns {Object} data
  * @access private
  */
-exports.createCompany = asyncMiddleware(async (req, res, next) => {
+const createCompany = asyncHandler(async (req, res) => {
   const company = await Company.create(req.body);
-
   res.status(201).json({ success: true, data: company });
 });
 
@@ -62,21 +54,16 @@ exports.createCompany = asyncMiddleware(async (req, res, next) => {
  * @returns {Object} data
  * @access private
  */
-exports.updateCompany = asyncMiddleware(async (req, res, next) => {
+const updateCompany = asyncHandler(async (req, res) => {
   const company = await Company.findByIdAndUpdate(req.params.id, req.body, {
     new: true,
-    runValidators: true
+    runValidators: true,
   });
 
   if (!company) {
-    return next(
-      new ErrorResponse(
-        `Company not found with the ID of ${req.params.id}`,
-        404
-      )
-    );
+    res.status(404);
+    throw new Error('Company with this ID not found');
   }
-
   res.status(200).json({ success: true, data: company });
 });
 
@@ -86,18 +73,21 @@ exports.updateCompany = asyncMiddleware(async (req, res, next) => {
  * @returns {Object} data
  * @access private
  */
-exports.deleteCompany = asyncMiddleware(async (req, res, next) => {
+const deleteCompany = asyncHandler(async (req, res) => {
   const company = await Company.findById(req.params.id);
 
   if (!company) {
-    return next(
-      new ErrorResponse(
-        `Company not found with the ID of ${req.params.id}`,
-        404
-      )
-    );
+    res.status(404);
+    throw new Error('Company with this ID not found');
   }
-
   company.remove();
   res.status(200).json({ success: true, data: {} });
 });
+
+export {
+  getCompanies,
+  getCompany,
+  createCompany,
+  updateCompany,
+  deleteCompany,
+};

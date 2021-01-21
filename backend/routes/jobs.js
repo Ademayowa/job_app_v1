@@ -1,17 +1,17 @@
-const express = require('express');
+import express from 'express';
 const router = express.Router();
-const dotenv = require('dotenv');
+import dotenv from 'dotenv';
 
-const {
+import {
   getJobs,
   getJob,
   createJob,
   updateJob,
   deleteJob,
-} = require('../controllers/jobs');
+} from '../controllers/jobs.js';
 
 router.route('/').get(getJobs).post(createJob);
 
 router.route('/:id').get(getJob).put(updateJob).delete(deleteJob);
 
-module.exports = router;
+export default router;
