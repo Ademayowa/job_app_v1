@@ -3,8 +3,8 @@ const jobs = [
     _id: '5d725a4a7b292f5f8ceff789',
     name: 'Shell Business Operations',
     website: 'https://www.shell.com',
-    phone: '(111) 111-1111',
-    email: 'shellibat@.com',
+    jobUrl:
+      'https://careers.unity.com/position/front-end-developer-intern-unity/2530918',
     title: 'Front End Developer',
     summary:
       'Shell Business Operations is an established web services company with a track record of delivering great looking and diverse web projects. We are looking for Front End Software Engineer who is a specialist in front end development with a data-driven, user-centric mindset. You are passionate about designing front-end software systems and you enjoy the challenge of creating clean, elegant, scalable code in a complex environment. You are a master in HTML and CSS and use your expertise to solve complex problems while looking ahead to the bigger picture.',
@@ -36,9 +36,8 @@ const jobs = [
   {
     _id: '5d725c84c4ded7bcb480eaa0',
     name: 'Patricia',
-    website: 'https://www.mypatricia.co/careers',
-    phone: '(222) 222-2222',
-    email: 'patsubzero@gmail.com',
+    website: 'https://www.mypatricia.co',
+    jobUrl: 'https://www.mypatricia.co/careers',
     title: 'Backend Developer',
     summary:
       'We are looking for an experienced Back-end developer to join our IT team. You will be responsible for the server side of our web applications. If you have excellent programming skills and a passion for developing applications or improving existing ones, we would like to meet you.',
@@ -69,8 +68,7 @@ const jobs = [
     _id: '5d725cb9c4ded7bcb480eaa1',
     name: 'TED',
     website: 'https://ted.com',
-    phone: '(222) 222-2222',
-    email: 'kitanated.com',
+    jobUrl: 'https://careers.nationalgridus.com/job/-/-/793/18010076',
     title: 'Engineering Manager',
     summary:
       'Lead and manage a team of software engineers, including supporting their hiring, retention, career growth and professional development, and performance management and also Serve as an escalation point on technical decisions that span multiple project areas, including technical architecture, programming languages, saas modules, deprecation decisions, and other technical strategic decisions',
@@ -83,7 +81,7 @@ const jobs = [
       'Contribute to TED’s overall success: the strength of our global communities, the relevance of our projects, and the impact of our ideas',
     ],
     salary: '$190k - 250k',
-    location: 'Boston, USA',
+    location: 'USA',
     skillLevel: 'senior',
     skills: [
       'Time management',
@@ -101,8 +99,7 @@ const jobs = [
     _id: '5d725cd2c4ded7bcb480eaa2',
     name: 'Ministry of Justice and Security',
     website: 'https://www.werkenvoornederland.nl/',
-    phone: '(333) 333-3333',
-    email: 'devops@gmail.com',
+    jobUrl: 'https://qohash.com/careers/devops/',
     title: 'DevOps Engineer',
     summary:
       'You also make an important contribution to the improvement of the field of software engineering. You think along about an efficient design of the development process, in which forensic knowledge is safeguarded as well as possible. Your work therefore has an impact on society. Together with your colleagues and our chain partners, we make the Netherlands a bit safer',
@@ -140,8 +137,7 @@ const jobs = [
     _id: '5d725ce8c4ded7bcb480eaa3',
     name: 'Member Vault',
     website: 'https://membervault.co/',
-    phone: '(444) 444-4444',
-    email: 'erin@membervault.co',
+    jobUrl: 'https://digiscorp.com/vacancies/',
     title: 'Full Stack PHP Developer',
     summary:
       'We are looking for a full-stack senior level developer with a talent for front end dev and an eye for good design to join our small virtual team.',

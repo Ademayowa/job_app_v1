@@ -25,6 +25,7 @@ const SingleJob = ({ match }) => {
     skills,
     role,
     about,
+    jobUrl,
   } = job;
 
   useEffect(() => {
@@ -71,7 +72,7 @@ const SingleJob = ({ match }) => {
             className='singleJob__logo img-fluid z-depth-5 mb-lg-5 ml-4'
           />
           <div className='singleJob__company ml-4'>
-            <h4 className='mb-2 mt-3'>{name}</h4>
+            <h4 className='mb-2'>{name}</h4>
             <p>
               <IoMdGlobe className='globe' />
               <a
@@ -83,12 +84,14 @@ const SingleJob = ({ match }) => {
                 {website}
               </a>
             </p>
-            <Link
-              to={`/jobs/apply/${job._id}`}
+            <a
+              href={`${jobUrl}`}
+              target='_blank'
+              rel='noopener noreferrer'
               className='btn btn-danger btn-lg'
             >
-              Apply
-            </Link>
+              apply
+            </a>
           </div>
         </article>
       </div>
