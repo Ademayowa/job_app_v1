@@ -6,9 +6,7 @@ import colors from 'colors';
 import mongoSanitize from 'express-mongo-sanitize';
 import { errorHandler } from './middleware/errorMiddleware.js';
 import connectDB from './config/db.js';
-import auth from './routes/auth.js';
 import jobs from './routes/jobs.js';
-import companies from './routes/companies.js';
 
 dotenv.config();
 connectDB();
@@ -27,10 +25,7 @@ if (process.env.NODE_ENV === 'development') {
 app.use(mongoSanitize());
 
 // Mount routers
-app.use(`${API_PREFIX}/auth`, auth);
 app.use(`${API_PREFIX}/jobs`, jobs);
-app.use(`${API_PREFIX}/companies`, companies);
-
 app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000;

@@ -20,18 +20,6 @@ export default (state, action) => {
           return job.location.match(regex) || job.title.match(regex);
         }),
       };
-    case 'APPLICATION_SUCCESS':
-      return {
-        ...state,
-        apply: action.payload,
-        loading: false,
-      };
-    case 'APPLICATION_FAIL':
-      return {
-        ...state,
-        apply: null,
-        loading: false,
-      };
     default:
       return state;
   }

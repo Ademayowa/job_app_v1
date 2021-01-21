@@ -6,7 +6,6 @@ import axios from 'axios';
 const initialState = {
   jobs: [],
   job: [],
-  apply: [],
   filtered: null,
   loading: true,
 };
@@ -52,35 +51,11 @@ export const JobProvider = ({ children }) => {
     });
   };
 
-  // Apply for jobs
-  const apply = async (formData) => {
-    const config = {
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    };
-
-    try {
-      const res = await axios.post('/api/v1/jobs/apply', formData, config);
-
-      dispatch({
-        type: 'APPLICATION_SUCCESS',
-        payload: res.data,
-      });
-    } catch (err) {
-      dispatch({
-        type: 'APPLICATION_FAIL',
-        payload: err.response.data.msg,
-      });
-    }
-  };
-
   return (
     <JobContext.Provider
       value={{
         jobs: state.jobs,
         job: state.job,
-        apply: state.apply,
         loading: state.loading,
         filtered: state.filtered,
         getJobs,

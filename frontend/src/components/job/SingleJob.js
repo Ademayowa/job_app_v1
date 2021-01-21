@@ -2,12 +2,7 @@ import React, { useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { JobContext } from '../../context/jobs/JobState';
 import Spinner from '../layout/Spinner';
-import {
-  FaRegMoneyBillAlt,
-  FaTools,
-  FaPhone,
-  FaEnvelope,
-} from 'react-icons/fa';
+import { FaRegMoneyBillAlt, FaTools } from 'react-icons/fa';
 import { MdLocationOn } from 'react-icons/md';
 import { IoMdGlobe } from 'react-icons/io';
 

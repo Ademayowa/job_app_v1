@@ -97,7 +97,7 @@ const jobs = [
   },
   {
     _id: '5d725cd2c4ded7bcb480eaa2',
-    name: 'Ministry of Justice and Security',
+    name: 'Ministry of Security',
     website: 'https://www.werkenvoornederland.nl/',
     jobUrl: 'https://qohash.com/careers/devops/',
     title: 'DevOps Engineer',
