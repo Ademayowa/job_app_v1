@@ -1,51 +1,35 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
 
 const FeaturedJobList = ({ job }) => {
-  let { name, title, location, type, logo } = job;
+  const { name, title, location, type, logo } = job;
 
   return (
     <section className='featured'>
-      <div className='card card-body p-4 m-4 text-left'>
-        <div className='image'>
-          <img
-            src={logo}
-            alt='img-logo'
-            className='img-fluid'
-            style={{
-              width: '80px',
-              height: '80px',
-              objectFit: 'cover',
-              borderRadius: '60px',
-              position: 'relative',
-              top: '15px',
-            }}
-          />
+      <div className='card card-body p-4 m-4 pb-3 text-left'>
+        <div className='featured__img'>
+          <img src={logo} alt='logo' className='img-fluid' />
         </div>
-        <div style={{ marginLeft: '100px', marginTop: '-60px' }}>
-          <h3 className='orange-color text-capitalize mb-2'>{name}</h3>
+
+        <div className='featured__jobInfo mb-5'>
+          <h3 className='mb-2'>{name}</h3>
           <h4>{title}</h4>
-          <p className='gray-color'>
+          <p>
             {type} · {location}
           </p>
-          <div className='test' />
-        </div>
-        <div className='float-right apply mb-4' style={{ marginTop: '-50px' }}>
-          <Link
-            to={`/jobs/${job._id}`}
-            className='btn btn-outline-danger btn-sm float-right'
-          >
-            Apply Now
-          </Link>
+
+          <div className='featured__applyBtn mb-4'>
+            <Link
+              to={`/jobs/${job._id}`}
+              className='btn btn-outline-danger btn-lg'
+            >
+              Apply Now
+            </Link>
+          </div>
         </div>
       </div>
     </section>
   );
-};
-
-FeaturedJobList.propTypes = {
-  job: PropTypes.object.isRequired,
 };
 
 export default FeaturedJobList;

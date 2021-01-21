@@ -16,6 +16,13 @@ const jobSchema = new mongoose.Schema({
       'Please use a valid URL with HTTP or HTTPS',
     ],
   },
+  jobUrl: {
+    type: String,
+    match: [
+      /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/,
+      'Please use a valid URL with HTTP or HTTPS',
+    ],
+  },
   title: {
     type: String,
     trim: true,
@@ -40,6 +47,14 @@ const jobSchema = new mongoose.Schema({
   location: {
     type: String,
     required: true,
+  },
+  skillLevel: {
+    type: String,
+    required: [true, 'Please add a skill level'],
+  },
+  skills: {
+    type: [String],
+    required: [true, 'Please add skills'],
   },
   logo: {
     type: String,

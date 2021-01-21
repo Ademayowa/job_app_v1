@@ -33,9 +33,8 @@ const destroyData = async () => {
 };
 
 if (process.argv[2] === '-d') {
-  // use npm run data:destroy to remove data
   destroyData();
 } else {
-  // use npm run data:import to import data
+  // use npm run data:import
   importData();
 }

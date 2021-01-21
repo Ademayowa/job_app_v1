@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 const Navbar = ({ title }) => {
   return (
-    <nav className='navbar navbar-expand-lg navbar-info m-auto p-4'>
+    <nav className='navbar navbar-expand-lg navbar-info m-auto p-3 z-depth-2'>
       <div className='container'>
         <Link className='navbar-brand text-white' to='/'>
           <FaCode size={32} color='#ff6633' /> {title}

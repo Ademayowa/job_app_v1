@@ -25,10 +25,4 @@ const FeaturedJobs = () => {
   );
 };
 
-// const grid = {
-//   display: 'grid',
-//   gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
-//   gridGap: '2rem',
-// };
-
 export default FeaturedJobs;
