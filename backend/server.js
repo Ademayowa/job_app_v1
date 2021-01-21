@@ -24,6 +24,15 @@ if (process.env.NODE_ENV === 'development') {
 // Sanitize inputs
 app.use(mongoSanitize());
 
+// Serve static assets if in production
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '/frontend/build')));
+
+  app.use('*', (req, res) =>
+    res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'))
+  );
+}
+
 // Mount routers
 app.use(`${API_PREFIX}/jobs`, jobs);
 app.use(errorHandler);
