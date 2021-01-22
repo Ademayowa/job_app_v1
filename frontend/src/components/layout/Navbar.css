@@ -1,0 +1,17 @@
+nav {
+  background-color: transparent;
+  border-radius: 3rem;
+  color: var(--white-color) !important;
+  width: 90%;
+  position: relative;
+  top: 10px;
+}
+
+a.nav-link {
+  color: var(--white-color) !important;
+}
+
+.code {
+  font-size: 32;
+  color: var(--orange-color);
+}

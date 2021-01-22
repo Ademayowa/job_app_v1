@@ -1,0 +1,16 @@
+/* Hero */
+.defaultHero {
+  background-image: linear-gradient(
+      to right bottom,
+      rgba(15, 52, 91, 0.85),
+      rgba(15, 52, 81, 0.8)
+    ),
+    url('../../img/hero.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.job-search {
+  height: 30vh;
+}

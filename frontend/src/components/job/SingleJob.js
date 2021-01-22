@@ -5,6 +5,7 @@ import Spinner from '../layout/Spinner';
 import { FaRegMoneyBillAlt, FaTools } from 'react-icons/fa';
 import { MdLocationOn } from 'react-icons/md';
 import { IoMdGlobe } from 'react-icons/io';
+import './SingleJob.css';
 
 const SingleJob = ({ match }) => {
   const { job, loading, getJob } = useContext(JobContext);

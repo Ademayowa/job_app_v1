@@ -1,8 +1,9 @@
 import React, { useContext, useEffect } from 'react';
 import { JobContext } from '../../context/jobs/JobState';
-import FeaturedJobList from './FeaturedJobList';
+import FeaturedJobList from '../FeaturedJobList/FeaturedJobList';
 import Spinner from '../layout/Spinner';
 import Title from '../home/Title';
+import '../FeaturedJobList/FeaturedJobs.css';
 
 const FeaturedJobs = () => {
   const { jobs, loading, getJobs, filtered } = useContext(JobContext);

@@ -1,8 +1,8 @@
 import React from 'react';
-import Hero from './Hero';
+import Hero from '../Hero/Hero';
 import Navbar from '../layout/Navbar';
-import Banner from './Banner';
-import SearchForm from './SearchForm';
+import Banner from '../Banner/Banner';
+import SearchForm from '../SearchForm/SearchForm';
 import FeaturedJobs from '../jobs/FeaturedJobs';
 
 const Home = () => {

@@ -1,0 +1,32 @@
+.job-search form button {
+  height: 10;
+  width: 100%;
+  padding: 9px 0;
+  font-size: 30px;
+  background-color: var(--orange-color) !important;
+  height: 54px;
+  border-radius: 8px;
+  border: none !important;
+}
+
+.job-search form .row > div {
+  padding: 0 5px;
+}
+
+.job-search span {
+  position: absolute;
+  top: 15px;
+  right: 22px;
+  color: var(--orange-color);
+}
+
+.job-search .search {
+  position: absolute;
+  top: 4px;
+  right: 22px;
+  color: var(--white-color);
+}
+
+.job-search button:hover {
+  background-color: var(--black-color) !important;
+}

@@ -2,6 +2,7 @@ import React, { useContext, useRef, useEffect } from 'react';
 import { FaRegKeyboard } from 'react-icons/fa';
 import { MdLocationOn, MdSearch } from 'react-icons/md';
 import { JobContext } from '../../context/jobs/JobState';
+import './SearchForm.css';
 
 const SearchForm = () => {
   const { filtered, filteredJobs } = useContext(JobContext);

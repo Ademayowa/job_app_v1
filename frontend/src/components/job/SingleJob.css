@@ -1,0 +1,83 @@
+.singleJob h3 {
+  color: var(--orange-color);
+}
+
+.singleJob__company p {
+  margin-top: -15px;
+}
+
+.singleJob hr {
+  border-bottom: 1px solid #e8ecec;
+}
+
+.singleJob p,
+.singleJob ul {
+  color: var(--gray-color);
+  line-height: var(--line-height);
+}
+
+.singleJob__info svg {
+  margin-left: 15px;
+  color: var(--orange-color);
+}
+
+.location {
+  margin-left: 0 !important;
+}
+
+.singleJob__icons {
+  line-height: var(--line-height);
+}
+
+.singleJob h4 {
+  padding: 15px 0;
+}
+
+.singleJob__icons svg {
+  margin-left: 15px;
+  color: var(--orange-color);
+  font-size: 20px;
+}
+
+.singleJob .btn-danger {
+  text-transform: capitalize;
+}
+
+.no-profile .btn-danger,
+.application-form .btn-danger {
+  background: var(--orange-color) !important;
+  border-radius: 25px;
+  border: 0 !important;
+}
+
+.singleJob .btn-danger {
+  background: var(--orange-color) !important;
+  border-radius: 25px;
+  border: 0 !important;
+  margin-top: -5px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.singleJob__logo {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 60px;
+}
+
+.singleJob__company .btn-danger {
+  width: 250px !important;
+  font-size: 13px !important;
+  border-radius: 40px !important;
+  border: 0 !important;
+}
+
+.singleJob__company h4 {
+  text-transform: capitalize;
+}
+
+.globe {
+  font-size: 16px;
+  color: var(--orange-color);
+}

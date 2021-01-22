@@ -1,0 +1,14 @@
+.banner h2 {
+  margin-top: 150px;
+  font-size: 48px !important;
+  font-weight: 700;
+}
+
+.banner p {
+  font-size: 21px;
+  letter-spacing: var(--letter-spacing-banner);
+}
+
+.form-control {
+  height: 54px !important;
+}
