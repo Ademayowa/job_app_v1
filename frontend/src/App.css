@@ -337,6 +337,7 @@ a.nav-link {
   }
   .featured__applyBtn .btn-outline-danger {
     margin-top: -50px !important;
+    margin-left: -10px !important;
   }
 }
 
