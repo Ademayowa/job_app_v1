@@ -81,7 +81,7 @@ const jobs = [
       'Contribute to TED’s overall success: the strength of our global communities, the relevance of our projects, and the impact of our ideas',
     ],
     salary: '$190k - 250k',
-    location: 'USA',
+    location: 'Boston, USA',
     skillLevel: 'senior',
     skills: [
       'Time management',
