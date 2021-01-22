@@ -19,10 +19,7 @@ const FeaturedJobList = ({ job }) => {
           </p>
 
           <div className='featured__applyBtn mb-4'>
-            <Link
-              to={`/jobs/${job._id}`}
-              className='btn btn-outline-danger btn-lg'
-            >
+            <Link to={`/jobs/${job._id}`} className='btn btn-outline-danger'>
               Apply Now
             </Link>
           </div>
