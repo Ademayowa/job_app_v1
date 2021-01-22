@@ -72,15 +72,15 @@
   text-transform: capitalize;
 }
 
+@media (max-width: 768px) {
+  .featuredJob__details h3 {
+    display: none !important;
+  }
+}
+
 @media (max-width: 576px) {
   .featuredJob__body {
     display: grid !important;
     justify-content: center;
-  }
-}
-
-@media (max-width: 320px) {
-  .featuredJob__details h3 {
-    display: none !important;
   }
 }

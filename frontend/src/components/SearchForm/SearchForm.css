@@ -1,3 +1,7 @@
+.job-search {
+  height: 30vh;
+}
+
 .job-search form button {
   height: 10;
   width: 100%;
@@ -29,4 +33,10 @@
 
 .job-search button:hover {
   background-color: var(--black-color) !important;
+}
+
+@media (max-width: 768px) {
+  .job-search {
+    margin-bottom: 140px !important;
+  }
 }
