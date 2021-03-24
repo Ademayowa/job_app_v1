@@ -13,15 +13,17 @@ const FeaturedJobs = () => {
     // eslint-disable-next-line
   }, []);
 
-  if (loading) return <Spinner />;
+  // if (loading) return <Spinner />;
   return (
     <div className='container featured-jobs text-center'>
       <Title title='featured jobs' />
-      <div>
-        {filtered !== null
-          ? filtered.map((job) => <FeaturedJobList key={job._id} job={job} />)
-          : jobs.map((job) => <FeaturedJobList key={job._id} job={job} />)}
-      </div>
+      <>
+        {jobs.length > 0 && filtered !== null ? (
+          filtered.map((job) => <FeaturedJobList key={job._id} job={job} />)
+        ) : (
+          <h3>There are no jobs available at the moment</h3>
+        )}
+      </>
     </div>
   );
 };
