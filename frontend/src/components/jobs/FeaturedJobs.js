@@ -18,11 +18,9 @@ const FeaturedJobs = () => {
     <div className='container featured-jobs text-center'>
       <Title title='featured jobs' />
       <>
-        {jobs.length > 0 && filtered !== null ? (
-          filtered.map((job) => <FeaturedJobList key={job._id} job={job} />)
-        ) : (
-          <h3>There are no jobs available at the moment</h3>
-        )}
+        {filtered !== null
+          ? filtered.map((job) => <FeaturedJobList key={job._id} job={job} />)
+          : jobs.map((job) => <FeaturedJobList key={job._id} job={job} />)}
       </>
     </div>
   );
